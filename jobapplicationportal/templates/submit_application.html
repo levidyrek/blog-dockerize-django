@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Submit an Application</title>
+
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>
+      Submit a Job Application
+    </h3>
+    <form id="application-form" action="{% url 'Submit Job Application' %}" method="POST">
+      {% csrf_token %}
+      <p>
+        {{ form.non_field_errors }}
+      </p>
+      <p>
+        {{ form.name.errors }}
+        {{ form.name.label_tag }}
+        {{ form.name }}
+      </p>
+      <p>
+        {{ form.email.errors }}
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </p>
+      <p>
+        {{ form.relevant_experience.errors }}
+        {{ form.relevant_experience.label_tag }}
+        {{ form.relevant_experience }}
+      </p>
+      <p>
+        {{ form.is_referral.errors }}
+        {{ form.is_referral.label_tag }}
+        {{ form.is_referral }}
+      </p>
+      <div class="referral-fields hidden">
+          <p>
+            {{ form.referrer_name.errors }}
+            {{ form.referrer_name.label_tag }}
+            {{ form.referrer_name }}
+          </p>
+          <p>
+            {{ form.referrer_email.errors }}
+            {{ form.referrer_email.label_tag }}
+            {{ form.referrer_email }}
+          </p>
+      </div>
+      <input type="submit" name="submit" />
+    </form>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="{% static 'submit_application.js' %}"></script>
+  </body>
+</html>
