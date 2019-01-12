@@ -15,7 +15,8 @@ class JobApplicationForm(forms.ModelForm):
 
 class JobReferralForm(forms.ModelForm):
     is_referral = forms.BooleanField(
-        label='Is this a referral?'
+        label='Is this a referral?',
+        required=False,
     )
 
     class Meta:
